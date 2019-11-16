@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)https://mdn.github.io/learning-area/css/styling-boxes/box-model-recap/flexbox-example.html -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Flexbox example</title>
+  <style>
+    section {
+      width: 93%;
+      height: 240px;
+      /* 设置纵、横外边距 */
+      margin: 20px auto;
+      background: purple;
+      /* 开启伸缩容器 */
+      display: flex;
+    }
+
+    div {
+      color: white;
+      background: orange;
+      /* flex 各元素等比例适应容器 */
+      flex: 1;
+      /* 设置右外边距 */
+      margin-right: 10px;
+      /* 阴影 */
+      text-shadow: 1px 1px 1px black;
+    }
+
+    div:last-child {
+      /* 调整最后一个div的右外边距 */
+      margin-right: 0;
+    }
+
+    section,
+    div {
+      /* 边框 */
+      border: 5px solid rgba(0, 0, 0, 0.85);
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <div>This is a box</div>
+    <div>This is a box</div>
+    <div>This is a box</div>
+  </section>
+
+  <button class="create">Create box</button>
+  <button class="reset">Reset demo</button>
+
+
+  <script>
+    var section = document.querySelector('section');
+    var createBtn = document.querySelector('.create');
+    var resetBtn = document.querySelector('.reset');
+
+    function createBox() {
+      var box = document.createElement('div');
+      box.textContent = 'This is a box';
+      section.appendChild(box);
+    }
+
+    createBtn.onclick = createBox;
+
+    resetBtn.onclick = function () {
+      while (section.firstChild) {
+        section.removeChild(section.firstChild);
+      }
+      createBox();
+      createBox();
+      createBox();
+    }
+  </script>
+
+</body>
+
+</html>
